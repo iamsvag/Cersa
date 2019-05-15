@@ -13,6 +13,8 @@ String Lesson2;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competitive);
 
+        ///
+
 
         //Players Matchmaking
         playerid = chooseplayer();
