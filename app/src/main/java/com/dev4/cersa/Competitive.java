@@ -22,7 +22,8 @@ String Lesson2;
 
      //Game Mode
 
-
+        // handling timer (progress bar)
+        //question bringer
         questions();
 
     }
