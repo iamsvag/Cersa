@@ -1,5 +1,12 @@
 package com.dev4.cersa;
 
-public class Questions {
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+
+public class Questions extends AppCompatActivity {
+
+
 
 }
+
+
