@@ -8,19 +8,83 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class Competitive extends AppCompatActivity {
+
+
+    Button answer1,answer2,answer3,answer4;
+    TextView tvQuestion;
+    TextView tvReport;
+
+
+    private Questions mQuestions = new Questions();
+    private String mAnswer;
+    private int mQusestinLength = mQuestions.mQuestions.length;
+
+    Random r;
 public int playerid;
 String Lesson1;
 String Lesson2;
- String question="Erwtisi mathimatos";
-public String AnswerA = "Apantisi 1";
-TextView tvQuestion;
-    TextView tvReport;
+// String question="Erwtisi mathimatos";
+//public String AnswerA = "Apantisi 1";
+
 Button startGame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competitive);
+
+        r=new Random();
+
+        answer1 = (Button)findViewById(R.id.answerA);
+        answer2 = (Button)findViewById(R.id.answerB);
+        answer3 = (Button)findViewById(R.id.answerC);
+        answer4 = (Button)findViewById(R.id.answerD);
+
+
+
+
+        answer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer1.getText() == mAnswer){
+                    updateQuestion(r.nextInt(mQusestinLength));
+
+                }
+
+            }
+        });
+        answer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer2.getText() == mAnswer){
+                    updateQuestion(r.nextInt(mQusestinLength));
+
+                }
+
+            }
+        });
+        answer3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer3.getText() == mAnswer){
+                    updateQuestion(r.nextInt(mQusestinLength));
+
+                }
+
+            }
+        });
+        answer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer4.getText() == mAnswer){
+                    updateQuestion(r.nextInt(mQusestinLength));
+
+                }
+
+            }
+        });
 
         ///
 
@@ -35,7 +99,10 @@ Button startGame;
 
      //Game Mode
         tvQuestion =(TextView)findViewById(R.id.tvQuestion) ;
-        tvQuestion.setText(question);
+       // tvQuestion.setText(Questions);
+        
+        updateQuestion(r.nextInt(mQusestinLength));
+
         tvReport =(TextView)findViewById(R.id.tvReport) ;
         tvReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +123,15 @@ Button startGame;
 
     }
 
+    private void updateQuestion(int num) {
+        tvQuestion.setText(mQuestions.getQuestion(num));
+        answer1.setText(mQuestions.getChoice1(num));
+        answer2.setText(mQuestions.getChoice2(num));
+        answer3.setText(mQuestions.getChoice3(num));
+        answer4.setText(mQuestions.getChoice4(num));
 
-
+        mAnswer = mQuestions.getCorrectAnswer(num);
+    }
 
 
     private void questions() {
