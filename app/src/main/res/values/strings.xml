@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Cersa</string>
+
+
+    <string-array name="courses">
+
+        <item>Calculus I</item>
+        <item>Software Engineering</item>
+        <item>Computer Architecture</item>
+
+
+
+
+    </string-array>
+
+
+
+
+
+
 </resources>
+
