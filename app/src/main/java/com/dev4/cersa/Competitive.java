@@ -1,6 +1,7 @@
 package com.dev4.cersa;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,11 +17,13 @@ public class Competitive extends AppCompatActivity {
     Button answer1,answer2,answer3,answer4;
     TextView tvQuestion;
     TextView tvReport;
-
+    TextView questionCount;
+    private int count = 1;
 
     private Questions mQuestions = new Questions();
     private String mAnswer;
     private int mQusestinLength = mQuestions.mQuestions.length;
+
 
     Random r;
 public int playerid;
@@ -34,6 +37,7 @@ Button startGame;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competitive);
+
 
         r=new Random();
 
@@ -49,18 +53,28 @@ Button startGame;
             @Override
             public void onClick(View v) {
                 if (answer1.getText() == mAnswer){
-                    updateQuestion(r.nextInt(mQusestinLength));
+                    answer1.setBackgroundColor(Color.GREEN);
 
+                    if (count <= 9) {
+                        questionCount.setText("Question:" + count );
+                        count++;
+                        questionCount.setText("Question:" + count );
+
+                        updateQuestion(r.nextInt(mQusestinLength));
+                    }
                 }
-
             }
         });
         answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (answer2.getText() == mAnswer){
-                    updateQuestion(r.nextInt(mQusestinLength));
+                    if (count <= 9) {
 
+                        count++;
+                        questionCount.setText("Question:" + count );
+                        updateQuestion(r.nextInt(mQusestinLength));
+                    }
                 }
 
             }
@@ -69,8 +83,12 @@ Button startGame;
             @Override
             public void onClick(View v) {
                 if (answer3.getText() == mAnswer){
-                    updateQuestion(r.nextInt(mQusestinLength));
+                    if (count <=9) {
 
+                        count++;
+                        questionCount.setText("Question:" + count );
+                        updateQuestion(r.nextInt(mQusestinLength));
+                    }
                 }
 
             }
@@ -79,7 +97,12 @@ Button startGame;
             @Override
             public void onClick(View v) {
                 if (answer4.getText() == mAnswer){
-                    updateQuestion(r.nextInt(mQusestinLength));
+                    if (count <=9) {
+
+                        count++;
+                        questionCount.setText("Question:" + count );
+                        updateQuestion(r.nextInt(mQusestinLength));
+                    }
 
                 }
 
@@ -98,7 +121,9 @@ Button startGame;
 
 
      //Game Mode
-        tvQuestion =(TextView)findViewById(R.id.tvQuestion) ;
+        tvQuestion =(TextView)findViewById(R.id.tvQuestion);
+        questionCount= (TextView)findViewById(R.id.questCount);
+
        // tvQuestion.setText(Questions);
         
         updateQuestion(r.nextInt(mQusestinLength));
@@ -124,6 +149,7 @@ Button startGame;
     }
 
     private void updateQuestion(int num) {
+
         tvQuestion.setText(mQuestions.getQuestion(num));
         answer1.setText(mQuestions.getChoice1(num));
         answer2.setText(mQuestions.getChoice2(num));
