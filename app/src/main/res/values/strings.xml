@@ -4,6 +4,7 @@
 
     <string-array name="courses">
 
+        <item>Choose Course</item>
         <item>Calculus I</item>
         <item>Software Engineering</item>
         <item>Computer Architecture</item>
