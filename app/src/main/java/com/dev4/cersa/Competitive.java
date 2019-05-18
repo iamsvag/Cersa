@@ -2,13 +2,18 @@ package com.dev4.cersa;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.util.Locale;
 import java.util.Random;
 
 public class Competitive extends AppCompatActivity {
@@ -18,6 +23,16 @@ public class Competitive extends AppCompatActivity {
     TextView tvQuestion;
     TextView tvReport;
     TextView questionCount;
+
+    //Timer Variables
+   private TextView countDisplay;
+   private CountDownTimer mCountDownTimer;
+   private boolean mTimerRunning;
+   private long mTimeLeftInMillis= START_TIME_IN_MILLIS;
+    private static   final long  START_TIME_IN_MILLIS = 600000 ;
+
+
+
     private int count = 1;
 
     private Questions mQuestions = new Questions();
@@ -40,42 +55,97 @@ Button startGame;
 
 
         r=new Random();
-
+//Button grab
         answer1 = (Button)findViewById(R.id.answerA);
         answer2 = (Button)findViewById(R.id.answerB);
         answer3 = (Button)findViewById(R.id.answerC);
         answer4 = (Button)findViewById(R.id.answerD);
 
 
+//TExt view grab
 
+        tvQuestion =(TextView)findViewById(R.id.tvQuestion);
+        questionCount= (TextView)findViewById(R.id.questCount);
+        countDisplay = (TextView)findViewById(R.id.CountDisplaybtn);
+        // tvQuestion.setText(Questions);
+
+        updateQuestion(r.nextInt(mQusestinLength));
+
+//start button Handler
+
+//Answer button handler
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (answer1.getText() == mAnswer){
-                    answer1.setBackgroundColor(Color.GREEN);
+                    Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
+                    if (count <= 9) {
+
+                        count++;
+                        questionCount.setText("Question:" + count );
+                        resetTimer();
+                        updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
+                    }else{
+                            resetTimer();
+                        Intent intent = new Intent(Competitive.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                }else{
+                    //   answer1.setBackgroundColor(Color.RED);
+                    Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
 
                     if (count <= 9) {
                         questionCount.setText("Question:" + count );
                         count++;
                         questionCount.setText("Question:" + count );
-
+                        resetTimer();
                         updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
+                    }else{
+                            resetTimer();
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
+                        startActivity(intent);
                     }
                 }
+
             }
         });
         answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (answer2.getText() == mAnswer){
+                    Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
                     if (count <= 9) {
 
                         count++;
                         questionCount.setText("Question:" + count );
                         updateQuestion(r.nextInt(mQusestinLength));
+                    }else{
+
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
+                        startActivity(intent);
+                    }
+                }else{
+                    //   answer1.setBackgroundColor(Color.RED);
+                    Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
+
+                    if (count <= 9) {
+                        questionCount.setText("Question:" + count );
+                        count++;
+                        questionCount.setText("Question:" + count );
+
+                        updateQuestion(r.nextInt(mQusestinLength));
+                    }else{
+
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
+                        startActivity(intent);
                     }
                 }
+
+
 
             }
         });
@@ -83,11 +153,31 @@ Button startGame;
             @Override
             public void onClick(View v) {
                 if (answer3.getText() == mAnswer){
-                    if (count <=9) {
+                    Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
+                    if (count <= 9) {
 
                         count++;
                         questionCount.setText("Question:" + count );
                         updateQuestion(r.nextInt(mQusestinLength));
+                    }else{
+
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
+                        startActivity(intent);
+                    }
+                }else{
+                    //   answer1.setBackgroundColor(Color.RED);
+                    Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
+
+                    if (count <= 9) {
+                        questionCount.setText("Question:" + count );
+                        count++;
+                        questionCount.setText("Question:" + count );
+
+                        updateQuestion(r.nextInt(mQusestinLength));
+                    }else{
+
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
+                        startActivity(intent);
                     }
                 }
 
@@ -97,13 +187,32 @@ Button startGame;
             @Override
             public void onClick(View v) {
                 if (answer4.getText() == mAnswer){
-                    if (count <=9) {
+                    Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
+                    if (count <= 9) {
 
                         count++;
                         questionCount.setText("Question:" + count );
                         updateQuestion(r.nextInt(mQusestinLength));
-                    }
+                    }else{
 
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
+                        startActivity(intent);
+                    }
+                }else{
+                    //   answer1.setBackgroundColor(Color.RED);
+                    Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
+
+                    if (count <= 9) {
+                        questionCount.setText("Question:" + count );
+                        count++;
+                        questionCount.setText("Question:" + count );
+
+                        updateQuestion(r.nextInt(mQusestinLength));
+                    }else{
+
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
+                        startActivity(intent);
+                    }
                 }
 
             }
@@ -148,6 +257,14 @@ Button startGame;
 
     }
 
+    private void resetTimer() {
+                mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                updateCountDownText();
+
+
+
+    }
+
     private void updateQuestion(int num) {
 
         tvQuestion.setText(mQuestions.getQuestion(num));
@@ -157,6 +274,41 @@ Button startGame;
         answer4.setText(mQuestions.getChoice4(num));
 
         mAnswer = mQuestions.getCorrectAnswer(num);
+        startTimer();
+
+    }
+
+    private void startTimer() {
+        mCountDownTimer =new CountDownTimer(mTimeLeftInMillis,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis=millisUntilFinished;
+                updateCountDownText();
+
+
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning= false;
+
+            }
+        }.start();
+
+
+        mTimerRunning =true;
+        
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (mTimeLeftInMillis /1000) /60;
+        int seconds = (int) ( mTimeLeftInMillis /1000)  % 60;
+
+        String timeLeftFormatted=String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+
+        countDisplay.setText(timeLeftFormatted);
+
+
     }
 
 
