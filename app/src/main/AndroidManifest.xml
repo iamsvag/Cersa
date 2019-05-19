@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EndCompetitive"></activity>
+        <activity android:name=".practice_course"></activity>
+        <activity android:name=".message" />
+        <activity android:name=".choose_course" />
+        <activity android:name=".EndCompetitive" />
         <activity android:name=".Competitive" />
         <activity android:name=".MainActivity">
             <intent-filter>
