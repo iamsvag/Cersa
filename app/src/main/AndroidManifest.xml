@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".practice_course"></activity>
+        <activity android:name=".stats"></activity>
+        <activity android:name=".settings" />
+        <activity android:name=".ProfilUser" />
+        <activity android:name=".enterID" />
+        <activity android:name=".ChoosePlayer" />
+        <activity android:name=".practice_course" />
         <activity android:name=".message" />
         <activity android:name=".choose_course" />
         <activity android:name=".EndCompetitive" />

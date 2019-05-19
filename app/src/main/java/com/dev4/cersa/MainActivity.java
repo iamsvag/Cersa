@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button competitive;
     Button practice;
+    Button profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,24 +19,32 @@ public class MainActivity extends AppCompatActivity {
 
 // Menu Handling
 
-        competitive =  (Button)findViewById(R.id.Compbtn);
-        practice = (Button)findViewById(R.id.Practbtn);
+        competitive = (Button) findViewById(R.id.Compbtn);
+        practice = (Button) findViewById(R.id.Practbtn);
+        profile = (Button) findViewById(R.id.profilebtn);
 
-            competitive.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, Competitive.class);
+        competitive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ChoosePlayer.class);
+                startActivity(intent);
+            }
+        });
 
-                    startActivity(intent);
-                }
-            });
+        practice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, practice_course.class);
+                startActivity(intent);
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ProfilUser.class);
+                startActivity(intent);
+            }
+        });
 
-            practice.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, practice_course.class);
-                 startActivity(intent);
-                 }
-            });
     }
 }
