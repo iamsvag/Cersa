@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 // Menu Handling
-
+/*
         competitive =  (Button)findViewById(R.id.Compbtn);
             competitive.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -26,6 +26,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
+*/
     }
 }
