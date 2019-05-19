@@ -19,7 +19,9 @@
         <activity android:name=".choose_course" />
         <activity android:name=".EndCompetitive" />
         <activity android:name=".Competitive" />
+        <activity android:name=".AddQuestion"/>
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
