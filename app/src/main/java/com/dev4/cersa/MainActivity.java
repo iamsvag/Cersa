@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity   {
 
 
 // Menu Handling
-/*
+
         competitive =  (Button)findViewById(R.id.Compbtn);
             competitive.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity   {
             }
         });
 
-*/
+
 
     }
 
