@@ -29,7 +29,7 @@ public class Competitive extends AppCompatActivity {
    private CountDownTimer mCountDownTimer;
    private boolean mTimerRunning;
    private long mTimeLeftInMillis= START_TIME_IN_MILLIS;
-    private static   final long  START_TIME_IN_MILLIS = 600000 ;
+    private static   final long  START_TIME_IN_MILLIS = 10000 ;
 
 
 
@@ -41,13 +41,8 @@ public class Competitive extends AppCompatActivity {
 
 
     Random r;
-public int playerid;
-String Lesson1;
-String Lesson2;
-// String question="Erwtisi mathimatos";
-//public String AnswerA = "Apantisi 1";
 
-Button startGame;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +64,8 @@ Button startGame;
         countDisplay = (TextView)findViewById(R.id.CountDisplaybtn);
         // tvQuestion.setText(Questions);
 
-        updateQuestion(r.nextInt(mQusestinLength));
 
+        updateQuestion(r.nextInt(mQusestinLength));
 //start button Handler
 
 //Answer button handler
@@ -253,13 +248,14 @@ Button startGame;
 
         // handling timer (progress bar)
         //question bringer
-        questions();
+
 
     }
 
     private void resetTimer() {
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
-                updateCountDownText();
+        mTimerRunning= false;
+          //      updateCountDownText();
 
 
 
@@ -291,6 +287,10 @@ Button startGame;
             @Override
             public void onFinish() {
                 mTimerRunning= false;
+                Toast.makeText(Competitive.this, "Time is up!!", Toast.LENGTH_SHORT).show();
+
+
+
 
             }
         }.start();
@@ -304,7 +304,7 @@ Button startGame;
         int minutes = (int) (mTimeLeftInMillis /1000) /60;
         int seconds = (int) ( mTimeLeftInMillis /1000)  % 60;
 
-        String timeLeftFormatted=String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+        String timeLeftFormatted=String.format(Locale.getDefault(),"%02d",seconds);
 
         countDisplay.setText(timeLeftFormatted);
 
@@ -312,8 +312,5 @@ Button startGame;
     }
 
 
-    private void questions() {
-        //Bring question info
 
-    }
 }
