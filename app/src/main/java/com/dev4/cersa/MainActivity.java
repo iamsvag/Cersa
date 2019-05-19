@@ -23,15 +23,17 @@ public class MainActivity extends AppCompatActivity   {
 
 
 // Menu Handling
-
+/*
         competitive =  (Button)findViewById(R.id.Compbtn);
             competitive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, Competitive.class);
+
                     startActivity(intent);
                 }
             });
+
 
         addquestion =  (Button)findViewById(R.id.questbtn);
         addquestion.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity   {
                 startActivity(intent);
             }
         });
+
+*/
+
     }
 
 
