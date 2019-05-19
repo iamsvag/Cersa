@@ -89,8 +89,7 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        question = et1.getText().toString();
-        answer   = et2.getText().toString();
+
 
 
         //Button
@@ -100,15 +99,14 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddQuestion.this, MainActivity.class);
-
+                question = et1.getText().toString();
+                answer   = et2.getText().toString();
 
                 boolean allclear =  ValidateQuestion(answer,question,questiontype,course);
 
             if(allclear){
              startActivity(intent);}
-            else{
-                Toast.makeText(getApplicationContext(), "Error" , Toast.LENGTH_SHORT).show();
-            }
+
 
            }
         });
@@ -130,12 +128,31 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
     private boolean ValidateQuestion(String answer,String question,String tipos,String mathima) {
 
 
-        if (mathima.equals("Choose Course"))  // Check if course selected
-            return false;
+        if (mathima.equals("Choose Course")) { // Check if course selected
 
-        if (radioGroup.getCheckedRadioButtonId() == -1) // Check if question type selected
+            Toast.makeText(this, "Please choose a course", Toast.LENGTH_SHORT).show();
             return false;
+        }
 
+        if (radioGroup.getCheckedRadioButtonId() == -1){ // Check if question type selected
+
+            Toast.makeText(this, "Please choose a question type", Toast.LENGTH_SHORT).show();
+
+
+        return false;
+    }
+
+
+
+        if (question.equals("")) {
+            Toast.makeText(this, "You did not enter a question", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (answer.equals("") && questiontype.equals("Πολλαπλής Επιλογής")) {
+            Toast.makeText(this, "You did not enter an answer", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
 
 
