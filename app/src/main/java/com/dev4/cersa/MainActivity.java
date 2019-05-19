@@ -4,50 +4,43 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
-public class MainActivity extends AppCompatActivity   {
+public class MainActivity extends AppCompatActivity {
 
     Button competitive;
-    Button addquestion;
-
+    Button practice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
 // Menu Handling
 
         competitive =  (Button)findViewById(R.id.Compbtn);
+        practice = (Button)findViewById(R.id.Practbtn);
+
             competitive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, Competitive.class);
-
+                    Intent intent = new Intent(MainActivity.this, choose_course.class);
                     startActivity(intent);
                 }
             });
 
-
-        addquestion =  (Button)findViewById(R.id.questbtn);
-        addquestion.setOnClickListener(new View.OnClickListener() {
+            practice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddQuestion.class);
+                Intent intent = new Intent(MainActivity.this, practice_course.class);
                 startActivity(intent);
             }
         });
-
 
 
     }
 
 
 
+    }
 }
