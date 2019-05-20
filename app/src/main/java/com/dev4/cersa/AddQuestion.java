@@ -31,6 +31,7 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
 
     RadioGroup radioGroup;
     RadioButton radioButton;
+    private Button btnDisplay;
 
 
 
@@ -39,11 +40,9 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_question);
 
-
-
-
         //RadioGroup
         radioGroup = findViewById(R.id.radiogroup1);
+        btnDisplay = (Button) findViewById(R.id.btnDisplay);
 
 
         //Spinner
@@ -53,11 +52,14 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-
+        //Edit Text
+        final EditText et1 = findViewById(R.id.editText2); // Question Form
+        final EditText et2 = findViewById(R.id.editText3); // Answer Form
+        final TextView et3 = findViewById(R.id.textView4);
 
         //Question Type
 
-        radioGroup.setOnClickListener(new View.OnClickListener() {
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
@@ -65,31 +67,20 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
                 radioButton = findViewById(radioId);
 
                 questiontype   = radioButton.getText().toString();
-            }
-        });
-
-        //Edit Text
-        final EditText et1 = findViewById(R.id.editText2); // Question Form
-        final EditText et2 = findViewById(R.id.editText3); // Answer Form
-        final TextView et3 = findViewById(R.id.textView4);
-
-        // Form Visibility according to question type
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.radioButton3){
+                Toast.makeText(AddQuestion.this,
+                        radioButton.getText(), Toast.LENGTH_SHORT).show();
+                // Form Visibility according to question type
+                if(questiontype.equals("Πολλαπλής Επιλογής")){
                     et1.setVisibility(View.VISIBLE);
                     et2.setVisibility(View.VISIBLE);
                     et3.setVisibility(View.VISIBLE);
-                } else {
+                }else{
                     et1.setVisibility(View.VISIBLE);
                     et2.setVisibility(View.INVISIBLE);
                     et3.setVisibility(View.INVISIBLE);
                 }
             }
         });
-
-
 
 
         //Button
@@ -149,8 +140,8 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
             return false;
         }
 
-        if (answer.equals("") && questiontype.equals("Πολλαπλής Επιλογής")) {
-            Toast.makeText(this, "You did not enter an answer", Toast.LENGTH_SHORT).show();
+        if (answer.equals("") && tipos.equals("Πολλαπλής Επιλογής")) {
+            Toast.makeText(this, "You did not enter an answer ", Toast.LENGTH_SHORT).show();
             return false;
         }
 
