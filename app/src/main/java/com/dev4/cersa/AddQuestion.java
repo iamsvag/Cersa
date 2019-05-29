@@ -66,6 +66,13 @@ public class AddQuestion extends AppCompatActivity implements AdapterView.OnItem
 
                 radioButton = findViewById(radioId);
 
+                if (radioGroup.getCheckedRadioButtonId() == -1) { // Check if question type selected
+
+                    Toast.makeText(AddQuestion.this, "Please choose a question type", Toast.LENGTH_SHORT).show();
+
+                    return;
+                }
+                
                 questiontype   = radioButton.getText().toString();
                 Toast.makeText(AddQuestion.this,
                         radioButton.getText(), Toast.LENGTH_SHORT).show();
