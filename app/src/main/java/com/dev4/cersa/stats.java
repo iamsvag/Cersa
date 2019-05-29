@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,9 @@ public class stats extends AppCompatActivity implements AdapterView.OnItemSelect
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
+
+
+
 
         //Spinner
         Spinner spinner = findViewById(R.id.spinner1);
@@ -46,6 +50,7 @@ public class stats extends AppCompatActivity implements AdapterView.OnItemSelect
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         period = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), period , Toast.LENGTH_SHORT).show();
+        ImageView image = findViewById(R.id.imageView);
 
         // Textviews
         final TextView et1 = findViewById(R.id.textView10); // Win
@@ -62,6 +67,7 @@ public class stats extends AppCompatActivity implements AdapterView.OnItemSelect
             et4.setVisibility(View.INVISIBLE);
             et5.setVisibility(View.VISIBLE);
             et6.setVisibility(View.INVISIBLE);
+            image.setImageResource(R.drawable.empty);
         }else if(period.equals("Τελευταία 10 παιχνίδια"))
         {
             et1.setVisibility(View.VISIBLE);
@@ -73,6 +79,7 @@ public class stats extends AppCompatActivity implements AdapterView.OnItemSelect
             et5.setVisibility(View.VISIBLE);
             et6.setVisibility(View.VISIBLE);
             et6.setText("30 minutes");
+            image.setImageResource(R.drawable.last10);
         }else if(period.equals("Τελευταίος Μήνας"))
         {
             et1.setVisibility(View.VISIBLE);
@@ -84,6 +91,7 @@ public class stats extends AppCompatActivity implements AdapterView.OnItemSelect
             et5.setVisibility(View.VISIBLE);
             et6.setVisibility(View.VISIBLE);
             et6.setText("130 minutes");
+            image.setImageResource(R.drawable.lastmonth);
         }else if(period.equals("Τελευταίο Εξάμηνο"))
         {
             et1.setVisibility(View.VISIBLE);
@@ -95,6 +103,7 @@ public class stats extends AppCompatActivity implements AdapterView.OnItemSelect
             et5.setVisibility(View.VISIBLE);
             et6.setVisibility(View.VISIBLE);
             et6.setText("250 minutes");
+            image.setImageResource(R.drawable.lastsemester);
         }
 
 
