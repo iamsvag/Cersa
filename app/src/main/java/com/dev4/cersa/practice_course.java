@@ -46,10 +46,11 @@ public class practice_course extends AppCompatActivity implements View.OnClickLi
             public void onClick(View v) {
                 if(course_title != null && count_course == 1) {
                     Intent intent = new Intent(practice_course.this, message.class);
+                    intent.putExtra("key",course_title);
                     startActivity(intent);
                 }
                 else if(course_title == null && count_course == 0) {
-                    Toast.makeText(getApplicationContext(),"You don't have choose course for practice!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"You have not choose course for practice!",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(practice_course.this, practice_course.class);
                     startActivity(intent);
                 }

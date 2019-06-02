@@ -16,7 +16,8 @@ public class ChoosePlayer extends AppCompatActivity {
 
         if (nvalue==0) { // Check an epelexe euresi paixti
 
-
+            Intent intent = new Intent(ChoosePlayer.this, choose_course.class);
+            startActivity(intent);
 
         } else if (nvalue==1) {  // Check an epelexe euresi mesw id
             Intent intent = new Intent(ChoosePlayer.this, enterID.class);
@@ -25,7 +26,8 @@ public class ChoosePlayer extends AppCompatActivity {
 
 
         }else if(nvalue==2){// check an epelexe emfanisi proigoumenwn antipalwn
-
+            Intent intent = new Intent(ChoosePlayer.this, choose_course.class);
+            startActivity(intent);
 
         }
 
@@ -34,6 +36,7 @@ public class ChoosePlayer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_choose_player);
         SearchOpp =  (Button)findViewById(R.id.SearchOppbtn);
         SearchOpp.setOnClickListener(new View.OnClickListener() {

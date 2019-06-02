@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ public class Competitive extends AppCompatActivity {
     TextView tvQuestion;
     TextView tvReport;
     TextView questionCount;
+    TextView coursename;
 
     //Timer Variables
    private TextView countDisplay;
@@ -48,7 +50,14 @@ public class Competitive extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competitive);
 
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("key");
+            //The key argument here must match that used in the other activity
+            coursename=(TextView)findViewById(R.id.coursename);
+            coursename.setText(value);
+            Log.i("apostolis", value);
+        }
         r=new Random();
 //Button grab
         answer1 = (Button)findViewById(R.id.answerA);
