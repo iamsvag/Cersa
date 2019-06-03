@@ -53,10 +53,10 @@ public class Competitive extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("key");
-            //The key argument here must match that used in the other activity
+            //The key argument matching the choose_course variable
             coursename=(TextView)findViewById(R.id.coursename);
             coursename.setText(value);
-            Log.i("apostolis", value);
+
         }
         r=new Random();
 //Button grab
@@ -78,6 +78,7 @@ public class Competitive extends AppCompatActivity {
 //start button Handler
 
 //Answer button handler
+// pick the correct ansewer and bring new question
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +99,7 @@ public class Competitive extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }else{
-                    //   answer1.setBackgroundColor(Color.RED);
+
                     Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
 
                     if (count <= 9) {
@@ -133,7 +134,7 @@ public class Competitive extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }else{
-                    //   answer1.setBackgroundColor(Color.RED);
+
                     Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
 
                     if (count <= 9) {
@@ -203,7 +204,7 @@ public class Competitive extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }else{
-                    //   answer1.setBackgroundColor(Color.RED);
+
                     Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
 
                     if (count <= 9) {
@@ -221,15 +222,6 @@ public class Competitive extends AppCompatActivity {
 
             }
         });
-
-        ///
-
-
-        //Players Matchmaking
-       // playerid = chooseplayer();
-
-        //Choose mutual lesson
-       // commonLessons(); //Lesson1,Lesson2
 
 
 
@@ -252,24 +244,18 @@ public class Competitive extends AppCompatActivity {
 
 
 
-
-
-
-        // handling timer (progress bar)
-        //question bringer
-
-
     }
 
     private void resetTimer() {
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
         mTimerRunning= false;
-          //      updateCountDownText();
+
 
 
 
     }
 
+    //bring new question handler
     private void updateQuestion(int num) {
 
         tvQuestion.setText(mQuestions.getQuestion(num));

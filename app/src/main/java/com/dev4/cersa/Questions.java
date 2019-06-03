@@ -1,29 +1,31 @@
 package com.dev4.cersa;
 
 
-
+//stin klasi questions kanonika ginetai h sindesi me thn vasi
+//stin dikia mas morfi kai gia na mporei na ilopoihthei h efarmogh mpainoun statika
 public class Questions {
 
+    // kataxwrw tis erwtisis/apantiseis statika
     public String mQuestions[]={
-            "Erwtisi 1" ,
-            "Erwtisi 2" ,
-            "Erwtisi 3" ,
-            "Erwtisi 4" ,
-            "Erwtisi 5" ,
+            "Ποιος είναι καθηγητής στην Λογική Σχεδίαση;" ,
+            "Δώσε αποτέλεσμα 1+3" ,
+            "Πόσα χρόνια ειναι το CEID;" ,
+            "Ποιος είναι πρόεδρος του Τμήματος" ,
+            "Σε ποια πόλη είναι το CEID;" ,
 
 
 
     };
 
     public String mChoices[][]={
-        {"Answer1","Answer2","Answer3","Answer4"},
-        {"Answer2","Answer1","Answer3","Answer4"},
-        {"Answer3","Answer2","Answer1","Answer4"},
-        {"Answer4","Answer2","Answer3","Answer1"},
-        {"Answer1","Answer2","Answer3","Answer4"},
+        {"Κος Βέργος","Κος Αλεξίου","Κος Λουτσέσκου","Κος Μπαρτζώκας"},
+        {"2","lne","4","ln kourtinas"},
+        {"To ceid είναι για πάντα","3","10","5"},
+        {"Κος Γαροφαλάκης","Κος Γαλλόπουλος","Κος Μαρινάκης","Κος Αλαφούζος"},
+        {"Πάτρα","Αθήνα","Ηράκλειο","Γουίντερφελ"},
     };
 
-    private String mCorrectAnswers[] = {"Answer1","Answer2","Answer3","Answer4","Answer1",};
+    private String mCorrectAnswers[] = {"Κος Βέργος","4","5","Κος Γαλλοπουλος","Πάτρα",};
 
 
     public String getQuestion(int a){

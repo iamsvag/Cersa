@@ -15,6 +15,8 @@ public class EndCompetitive extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_competitive);
 
+        //choose from replay a game and exit to main menu
+
         Replay =  (Button)findViewById(R.id.Replaybtn);
         Replay.setOnClickListener(new View.OnClickListener() {
             @Override
