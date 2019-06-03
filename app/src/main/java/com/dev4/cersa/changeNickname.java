@@ -18,7 +18,7 @@ Button Confirm;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_nickname);
-
+//trabaei to nickname apo to proigoumeno acitvity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("key");
@@ -26,6 +26,7 @@ Button Confirm;
             changename=value;
 
         }
+        //sbinei to arxiko text poy itan kataxwrimeno sto textview
         oldname=(TextView)findViewById(R.id.old);
         oldname.setText(changename);
         newname = (EditText) findViewById(R.id.old1);
@@ -37,6 +38,7 @@ Button Confirm;
 
             }
         });
+        //to button pou allazei to palio nickname me to neo kai se stelnei sto profil user
         Confirm = (Button) findViewById(R.id.btn);
         Confirm.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,6 +18,7 @@ public class settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        //trabaei apo to prohgoumeno acitivity to nickname
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("key");
@@ -25,6 +26,8 @@ public class settings extends AppCompatActivity {
             changename=value;
 
         }
+        //to button pou se odigei sto activity profil photo change alla den egine opote apla se girnaei sto main menu
+
         profile =  (Button)findViewById(R.id.profbtn);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +36,7 @@ public class settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //to button pou se odigei sto activity allagis kwdikou
         password = (Button)findViewById(R.id.codebtn);
         password.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +45,7 @@ public class settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //to button pou se odigei sto activity allagis nickname
         nickname =  (Button)findViewById(R.id.nickbtn);
         nickname.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +56,8 @@ public class settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //to button pou se odigei sto activity diagrafis logariasmou
+        //den egine opote apla se petaei sto main menu
         delete = (Button)findViewById(R.id.delbtn);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override

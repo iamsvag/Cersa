@@ -24,12 +24,15 @@ public class ProfilUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_user);
+        //eisagw statika ta stoixeia pou emfanizontai se auto to activity
         name = (TextView) findViewById(R.id.name);
         name.setText("Apostolos");
         year = (TextView) findViewById(R.id.year);
         year.setText("2014");
         nickname = (TextView) findViewById(R.id.enternickname);
+        //analogws an exei alla3ei to nickname apo to changeNickname pairnei to antistoixo periexomeno
         Bundle extras = getIntent().getExtras();
+        //
         if (extras != null) {
             String value = extras.getString("key");
             //The key argument here must match that used in the other activity
@@ -50,6 +53,7 @@ public class ProfilUser extends AppCompatActivity {
         winstreak.setText("6");
         playerID = (TextView) findViewById(R.id.enterplayerID);
         playerID.setText("12345");
+        //to button pou se odigei sto activity statistika
         stats =  (Button)findViewById(R.id.statsbtn);
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +63,7 @@ public class ProfilUser extends AppCompatActivity {
             }
         });
         settings = (Button)findViewById(R.id.setbtn);
+        //to button pou se odigei sto activity profil user
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
