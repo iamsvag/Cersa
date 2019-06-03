@@ -35,7 +35,7 @@ public class Competitive extends AppCompatActivity {
 
 
 
-    private int count = 1;
+    private int count = 2;
 
     private Questions mQuestions = new Questions();
     private String mAnswer;
@@ -75,7 +75,8 @@ public class Competitive extends AppCompatActivity {
 
 
         updateQuestion(r.nextInt(mQusestinLength));
-//start button Handler
+        startTimer();
+
 
 //Answer button handler
 // pick the correct ansewer and bring new question
@@ -88,14 +89,15 @@ public class Competitive extends AppCompatActivity {
                     Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
                     if (count <= 9) {
 
-                        count++;
-                        questionCount.setText("Question:" + count );
                         resetTimer();
+                        questionCount.setText("Question:" + count );
+                        count++;
+
                         updateQuestion(r.nextInt(mQusestinLength));
                         startTimer();
                     }else{
                             resetTimer();
-                        Intent intent = new Intent(Competitive.this, MainActivity.class);
+                        Intent intent = new Intent(Competitive.this, EndCompetitive.class);
                         startActivity(intent);
                     }
                 }else{
@@ -103,10 +105,10 @@ public class Competitive extends AppCompatActivity {
                     Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
 
                     if (count <= 9) {
+                        resetTimer();
                         questionCount.setText("Question:" + count );
                         count++;
-                        questionCount.setText("Question:" + count );
-                        resetTimer();
+
                         updateQuestion(r.nextInt(mQusestinLength));
                         startTimer();
                     }else{
@@ -125,9 +127,12 @@ public class Competitive extends AppCompatActivity {
                     Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
                     if (count <= 9) {
 
-                        count++;
+                        resetTimer();
                         questionCount.setText("Question:" + count );
+                        count++;
+
                         updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
                     }else{
 
                         Intent intent = new Intent(Competitive.this, EndCompetitive.class);
@@ -138,11 +143,12 @@ public class Competitive extends AppCompatActivity {
                     Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
 
                     if (count <= 9) {
+                        resetTimer();
                         questionCount.setText("Question:" + count );
                         count++;
-                        questionCount.setText("Question:" + count );
 
                         updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
                     }else{
 
                         Intent intent = new Intent(Competitive.this, EndCompetitive.class);
@@ -161,24 +167,27 @@ public class Competitive extends AppCompatActivity {
                     Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
                     if (count <= 9) {
 
-                        count++;
+                        resetTimer();
                         questionCount.setText("Question:" + count );
+                        count++;
+
                         updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
                     }else{
 
                         Intent intent = new Intent(Competitive.this, EndCompetitive.class);
                         startActivity(intent);
                     }
                 }else{
-                    //   answer1.setBackgroundColor(Color.RED);
+
                     Toast.makeText(Competitive.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
 
                     if (count <= 9) {
                         questionCount.setText("Question:" + count );
                         count++;
-                        questionCount.setText("Question:" + count );
-
+                        resetTimer();
                         updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
                     }else{
 
                         Intent intent = new Intent(Competitive.this, EndCompetitive.class);
@@ -195,9 +204,12 @@ public class Competitive extends AppCompatActivity {
                     Toast.makeText(Competitive.this, "Correct Answer", Toast.LENGTH_SHORT).show();
                     if (count <= 9) {
 
-                        count++;
+
                         questionCount.setText("Question:" + count );
+                        count++;
+                        resetTimer();
                         updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
                     }else{
 
                         Intent intent = new Intent(Competitive.this, EndCompetitive.class);
@@ -210,9 +222,9 @@ public class Competitive extends AppCompatActivity {
                     if (count <= 9) {
                         questionCount.setText("Question:" + count );
                         count++;
-                        questionCount.setText("Question:" + count );
-
+                        resetTimer();
                         updateQuestion(r.nextInt(mQusestinLength));
+                        startTimer();
                     }else{
 
                         Intent intent = new Intent(Competitive.this, EndCompetitive.class);
@@ -248,26 +260,15 @@ public class Competitive extends AppCompatActivity {
 
     private void resetTimer() {
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                mCountDownTimer.cancel();
         mTimerRunning= false;
 
 
-
-
     }
 
-    //bring new question handler
-    private void updateQuestion(int num) {
 
-        tvQuestion.setText(mQuestions.getQuestion(num));
-        answer1.setText(mQuestions.getChoice1(num));
-        answer2.setText(mQuestions.getChoice2(num));
-        answer3.setText(mQuestions.getChoice3(num));
-        answer4.setText(mQuestions.getChoice4(num));
 
-        mAnswer = mQuestions.getCorrectAnswer(num);
-        startTimer();
 
-    }
 
     private void startTimer() {
         mCountDownTimer =new CountDownTimer(mTimeLeftInMillis,1000) {
@@ -287,6 +288,7 @@ public class Competitive extends AppCompatActivity {
 
 
 
+
             }
         }.start();
 
@@ -295,13 +297,29 @@ public class Competitive extends AppCompatActivity {
         
     }
 
+
+
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis /1000) /60;
         int seconds = (int) ( mTimeLeftInMillis /1000)  % 60;
 
-        String timeLeftFormatted=String.format(Locale.getDefault(),"%02d",seconds);
+       String timeLeftFormatted=String.format(Locale.getDefault(),"%02d",seconds);
 
         countDisplay.setText(timeLeftFormatted);
+
+
+    }
+
+    //bring new question handler
+    private void updateQuestion(int num) {
+
+        tvQuestion.setText(mQuestions.getQuestion(num));
+        answer1.setText(mQuestions.getChoice1(num));
+        answer2.setText(mQuestions.getChoice2(num));
+        answer3.setText(mQuestions.getChoice3(num));
+        answer4.setText(mQuestions.getChoice4(num));
+
+        mAnswer = mQuestions.getCorrectAnswer(num);
 
 
     }
